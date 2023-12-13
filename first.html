@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>웹프로그래밍 과제</title>
+        <style>
+            .container{
+                background-color:white;
+                background-size: cover;
+                background-position: center top;
+
+                width: 100%;
+                height : 100vh;
+                color : black;
+            }
+        </style>
+        
+        
+    </head>
+    <body>
+
+        <div class="container">
+            <h1 style="background-color: white; position: absolute; top: 30%; 
+                left: 50%; transform: translate(-50%, -50%); font-size: 70px;">
+                    사계절</h1>
+        
+            <button onclick="window.open('others/four_seasons.html', '_self')" style="background-color: white; font-size: 30px; position: absolute; top: 70%; left: 50%; 
+            transform: translate(-50%, -50%)">
+                    <strong>시작하기</strong></button>
+        </div>
+        
+        <script>
+            function find_dat(){ //좋아하는 계절 존재 시 이름 반환, 없을 시 0 반환
+                if(!window.localStorage){
+                    return 0;
+                }
+                else{
+                    var exi = localStorage.getItem("fav_season");
+                    if(exi == null){
+                        return 0;
+                    }
+                    else{
+                        return exi;
+                    }
+                }
+            }
+
+            function set_back(k){
+                var back_url
+                if(k == 0){
+                    var randomNumber = Math.floor(Math.random() * 4);
+                    switch(randomNumber){
+                        case 0:
+                            back_url = "others/img/background/spring.png"; break;
+
+                        case 1:
+                            back_url = "others/img/background/summer.png"; break;
+
+                        case 2:
+                            back_url = "others/img/background/autumn.png"; break;
+
+                        case 3:
+                            back_url = "others/img/background/winter.png"; break;
+                    }
+                }
+                else{
+                    back_url = "others/img/background/" + k + ".png";
+                }
+                var bim = document.querySelector(".container");
+                bim.style.backgroundImage = "url(" + back_url + ")";
+            }
+            set_back(find_dat());
+        </script>
+
+    </body>
+</html>
