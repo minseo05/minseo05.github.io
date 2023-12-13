@@ -140,6 +140,9 @@
             /*==================건들면 안 되는 부분=================================*/
             function find_dat(){ //좋아하는 계절 존재 시 이름 반환, 없을 시 0 반환
                 if(!window.localStorage){
+                    return 0;
+                }
+                else{
                     var exi = localStorage.getItem("fav_season");
                     if(exi == null){
                         return 0;
@@ -147,9 +150,6 @@
                     else{
                         return exi;
                     }
-                }
-                else{
-                    return 0;
                 }
             }
 
